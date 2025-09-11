@@ -14,6 +14,13 @@ pipeline {
             }
         }
 
+        stage('Run Tests') {
+                    steps {
+                        // Run all unit & integration tests
+                        bat "mvn clean test"
+                    }
+                }
+
         stage('Build JAR') {
             steps {
                 // Build the JAR using Maven
