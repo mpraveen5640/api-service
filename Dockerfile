@@ -2,7 +2,7 @@
 FROM eclipse-temurin:17-jre
 
 # Copy your JAR into the container
-COPY api-service-0.0.1-SNAPSHOT.jar /app/app.jar
+COPY target/api-service-0.0.1-SNAPSHOT.jar /app/app.jar
 
 # Expose port 8090
 EXPOSE 8090
