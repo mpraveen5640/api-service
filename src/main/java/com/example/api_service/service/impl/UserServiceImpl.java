@@ -6,6 +6,8 @@ import com.example.api_service.repository.UserRepository;
 import com.example.api_service.service.UserService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -22,5 +24,10 @@ public class UserServiceImpl implements UserService {
             throw new UserAlreadyExistsException("User already exists with email: " + userEntity.getEmail());
         }
         return userRepository.save(userEntity);
+    }
+
+    @Override
+    public List<UserEntity> getAllUsers() {
+        return userRepository.findAll();
     }
 }
