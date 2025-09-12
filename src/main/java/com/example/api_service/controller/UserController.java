@@ -4,6 +4,7 @@ import com.example.api_service.entity.UserEntity;
 import com.example.api_service.exception.UserNotFoundException;
 import com.example.api_service.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,8 +15,16 @@ import java.util.List;
 @RestController
 public class UserController {
 
+    @Value("${app.name}")
+    private String appName;
+
     @Autowired
-    UserService userService;
+    private UserService userService;
+
+    @GetMapping("app/info")
+    public String getAppInfo() {
+        return appName;
+    }
 
     @PostMapping("create/user")
     public ResponseEntity<UserEntity> createUser(@RequestBody UserEntity userEntity) {
